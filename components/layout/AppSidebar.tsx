@@ -2,6 +2,7 @@
 
 import { useCallback } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { motion } from 'framer-motion'
 import {
@@ -46,10 +47,20 @@ export function AppSidebar({ onSearch }: AppSidebarProps) {
     >
       {/* 로고 영역 */}
       <div className="h-14 flex items-center justify-between px-4 border-b border-border-gray">
-        {!isCollapsed && (
+        {!isCollapsed ? (
           <Link href="/" className="flex items-center gap-2">
-            <span className="text-xl font-bold text-kt-red">PRISM</span>
-            <span className="text-xs text-muted-foreground">POC</span>
+            <Image
+              src="/ktstate_logo.png"
+              alt="KT Estate"
+              width={100}
+              height={28}
+              className="object-contain"
+            />
+            <span className="text-xs text-muted-foreground">PRISM</span>
+          </Link>
+        ) : (
+          <Link href="/" className="flex items-center">
+            <span className="text-sm font-bold text-kt-red">KT</span>
           </Link>
         )}
         <button
