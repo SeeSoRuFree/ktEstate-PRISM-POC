@@ -3,7 +3,8 @@
 import { useCallback, useState, useRef, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Search, Sparkles, Loader2 } from 'lucide-react'
+import { Search, Sparkles, Loader2, BookOpen } from 'lucide-react'
+import Link from 'next/link'
 import { AppSidebar } from './AppSidebar'
 import { cn } from '@/lib/utils'
 import { searchActionsGrouped, analyzeUserInput, hasHighConfidence, type GroupedActionResult } from '@/lib/actions'
@@ -118,7 +119,7 @@ export function AppLayout({ children, showSearch = true }: AppLayoutProps) {
       <div className="flex-1 flex flex-col min-w-0">
         {/* 상단 검색 바 */}
         {showSearch && (
-          <header className="h-14 bg-white border-b border-border-gray flex items-center px-6 sticky top-0 z-20">
+          <header className="h-14 bg-white border-b border-border-gray flex items-center justify-between px-6 sticky top-0 z-20">
             <div ref={searchRef} className="relative flex-1 max-w-2xl">
               {/* 검색 입력 */}
               <div className="relative">
@@ -223,6 +224,15 @@ export function AppLayout({ children, showSearch = true }: AppLayoutProps) {
                 )}
               </AnimatePresence>
             </div>
+
+            {/* POC 가이드 버튼 */}
+            <Link
+              href="/guide"
+              className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-smart-blue hover:bg-smart-blue-light rounded-lg transition-colors ml-4"
+            >
+              <BookOpen className="w-4 h-4" />
+              <span>POC 가이드</span>
+            </Link>
           </header>
         )}
 
